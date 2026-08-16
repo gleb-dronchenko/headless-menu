@@ -1,22 +1,21 @@
-import type { HeadlessMenuSubItemProps } from "./types";
+import type { ElementType } from 'react';
+import type { HeadlessMenuSubItemProps } from './types';
 
-export default function SubItem({
-    as: LinkComponent = 'a',
-    label,
-    classNames = {
-        item: '',
-        link: '',
-        label: '',
-    },
-    ...rest
-}: HeadlessMenuSubItemProps) {
+export default function Subitem(
+    props: HeadlessMenuSubItemProps,
+) {
+    const {
+        as,
+        className,
+        children,
+        ...rest
+    } = props;
+    const LinkComponent: ElementType = as ?? 'a';
+
     return (
-        <li className={classNames.item}>
-            <LinkComponent 
-                {...rest}
-                className={classNames.link ?? ''}
-            >
-                <span className={classNames.label}>{label}</span>
+        <li>
+            <LinkComponent className={className} {...rest}>
+                {children}
             </LinkComponent>
         </li>
     );

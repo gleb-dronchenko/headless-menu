@@ -1,32 +1,26 @@
-import { useRef, useState, useEffect } from 'react';
-import type { HeadlessMenuItemProps } from './types';
+import { useEffect, useRef, useState } from 'react';
+import { ItemContext } from './context';
 import { useMenuContext } from './hooks';
+import type { HeadlessMenuItemProps } from './types';
 
 export default function Item(
     props: HeadlessMenuItemProps,
 ) {
     const {
-        as: LinkComponent = 'a',
-        label,
-        icon,
-        classNames = {
-            item: '',
-            link: '',
-            icon: '',
-            label: '',
-            submenuAccordion: '',
-            submenuFlyout: '',
-        },
         children,
-        ...rest
+        className,
     } = props;
-
     const { isSidebarOpen } = useMenuContext();
-    const hasSubmenu = Boolean(children);
     const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
     const itemRef = useRef<HTMLLIElement>(null);
 
-    const Icon: React.ComponentType<React.SVGProps<SVGSVGElement>> | null = icon ?? null;
+    const toggleSubmenu = () => {
+        setIsSubmenuOpen((open) => !open);
+    };
+
+    const closeSubmenu = () => {
+        setIsSubmenuOpen(false);
+    };
 
     // закрывать сабменю при изменении состояния sidebar
     useEffect(() => {
@@ -34,65 +28,28 @@ export default function Item(
     }, [isSidebarOpen]);
 
     useEffect(() => {
-        if (!isSubmenuOpen) return;
+        if (!isSubmenuOpen) {
+            return;
+        }
 
         const onClickHandler = (event: MouseEvent) => {
-            if (!itemRef.current) return;
             if (!itemRef.current?.contains(event.target as Node)) {
                 setIsSubmenuOpen(false);
             }
         };
 
         // закрывать сабменю при клике вне него
-        document.addEventListener("click", onClickHandler);
-        return () => 
-            document.removeEventListener("click", onClickHandler);
-    }, [isSubmenuOpen, isSidebarOpen]);
+        document.addEventListener('click', onClickHandler);
 
-    const itemBody = (
-        <>
-            {Icon ? <Icon className={classNames.icon}/> : null}
-            {
-                isSidebarOpen ? 
-                    <span 
-                        className={classNames.label}
-                    >
-                        {label}
-                    </span> :
-                    null
-            }
-        </>
-    );
-    
+        return () =>
+            document.removeEventListener('click', onClickHandler);
+    }, [isSubmenuOpen]);
+
     return (
-        <li ref={itemRef} className={classNames?.item ?? ''}>
-            {
-                hasSubmenu ? (
-                    <button 
-                        type="button"
-                        className={classNames.link}
-                        onClick={() => setIsSubmenuOpen((open) => !open)}
-                    >
-                        {itemBody}
-                    </button>
-
-                ) : (
-                    <LinkComponent 
-                        {...rest}
-                        className={classNames?.link}
-                    >
-                        {itemBody}
-                    </LinkComponent>
-                )
-            }
-            
-            {hasSubmenu && isSubmenuOpen ? (
-                <ul
-                    className={isSidebarOpen ? classNames?.submenuAccordion : classNames?.submenuFlyout }
-                >
-                    {children}
-                </ul>
-            ) : null}
+        <li ref={itemRef} className={className}>
+            <ItemContext.Provider value={{ isSubmenuOpen, toggleSubmenu, closeSubmenu }}>
+                {children}
+            </ItemContext.Provider>
         </li>
     );
 }

@@ -1,32 +1,16 @@
 import { useMenuContext } from './hooks';
+import type { HeadlessMenuOpenBtnProps } from './types';
 
-type OpenBtnProps = {
-    icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-    classNames: {
-        container: string;
-        button: string;
-        icon: string;
-        iconOpened: string;
-    }    
-}
-export default function OpenBtn({ classNames, icon }: OpenBtnProps) {
+export default function OpenBtn({ className, children }: HeadlessMenuOpenBtnProps) {
     const { isSidebarOpen, setIsSidebarOpen } = useMenuContext();
-    const Icon: React.ComponentType<React.SVGProps<SVGSVGElement>> = icon;
 
     return (
-        <div className={classNames?.container}>
-            <button
-                type="button"
-                onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                className={classNames?.button}
-            >
-                <Icon
-                    className={[
-                        classNames?.icon,
-                        (isSidebarOpen ? classNames?.iconOpened : ''),
-                    ].join(' ')}
-                />
-            </button>
-        </div>
-    )
+        <button
+            type="button"
+            className={className}
+            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+        >
+            {children}
+        </button>
+    );
 }

@@ -6,6 +6,8 @@ import Item from "./Item";
 import { ShortLogo, FullLogo } from "./Logo";
 import OpenBtn from "./OpenBtn";
 import Subitem from "./Subitem";
+import Submenu from "./Submenu";
+import Trigger from "./Trigger";
 import type { HeadlessMenuProps } from "./types";
 
 function HeadlessMenu(
@@ -25,7 +27,9 @@ HeadlessMenu.ShortLogo = ShortLogo;
 HeadlessMenu.FullLogo = FullLogo;
 HeadlessMenu.List = List;
 HeadlessMenu.Item = Item;
+HeadlessMenu.Trigger = Trigger;
 HeadlessMenu.OpenBtn = OpenBtn;
 HeadlessMenu.Subitem = Subitem;
+HeadlessMenu.Submenu = Submenu;
 
 export default HeadlessMenu;

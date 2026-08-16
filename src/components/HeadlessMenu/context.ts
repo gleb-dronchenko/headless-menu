@@ -1,8 +1,5 @@
 import { createContext } from 'react';
-
-type MenuContextValue = {
-    isSidebarOpen: boolean;
-    setIsSidebarOpen: (open: boolean) => void;
-};
+import type { ItemContextValue, MenuContextValue } from './types';
 
 export const MenuContext = createContext<MenuContextValue | null>(null);
+export const ItemContext = createContext<ItemContextValue | null>(null);

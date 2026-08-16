@@ -1,7 +1,8 @@
 import { useMenuContext } from './hooks';
+import type { HeadlessMenuLogoProps } from './types';
 
 export function ShortLogo(
-    { children }: { children: React.ReactNode },
+    { children }: HeadlessMenuLogoProps,
 ) {
     const { isSidebarOpen } = useMenuContext();
     
@@ -15,7 +16,7 @@ export function ShortLogo(
 }
 
 export function FullLogo(
-    { children }: { children: React.ReactNode },
+    { children }: HeadlessMenuLogoProps,
 ) {
     const { isSidebarOpen } = useMenuContext();
     

@@ -1,5 +1,7 @@
+import type { HeadlessMenuListProps } from './types';
+
 export default function List(
-    props: { children: React.ReactNode },
+    props: HeadlessMenuListProps,
 ) {
     const { children } = props;
     return (

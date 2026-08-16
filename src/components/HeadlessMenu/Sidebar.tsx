@@ -1,5 +1,7 @@
+import type { HeadlessMenuSidebarProps } from './types';
+
 export default function Sidebar(
-    props: { children: React.ReactNode },
+    props: HeadlessMenuSidebarProps,
 ) {
     const {
         children,
