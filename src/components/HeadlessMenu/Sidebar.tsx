@@ -3,10 +3,11 @@ export default function Sidebar(
 ) {
     const {
         children,
+        ...rest
     } = props;
 
     return (
-        <div {...props}>
+        <div {...rest}>
             {children}
         </div>
     );
