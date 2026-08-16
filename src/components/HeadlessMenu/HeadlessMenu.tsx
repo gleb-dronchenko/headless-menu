@@ -6,6 +6,7 @@ import List from "./List";
 import Item from "./Item";
 import { ShortLogo, FullLogo } from "./Logo";
 import OpenBtn from "./OpenBtn";
+import Subitem from "./Subitem";
 
 function HeadlessMenu(
     { children }: { children: React.ReactNode }
@@ -25,5 +26,6 @@ HeadlessMenu.FullLogo = FullLogo;
 HeadlessMenu.List = List;
 HeadlessMenu.Item = Item;
 HeadlessMenu.OpenBtn = OpenBtn;
+HeadlessMenu.Subitem = Subitem;
 
 export default HeadlessMenu;

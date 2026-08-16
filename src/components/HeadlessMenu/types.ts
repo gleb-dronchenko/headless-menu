@@ -10,4 +10,15 @@ export type HeadlessMenuItemProps = {
         icon: string;
         label: string;
     };
+    children?: React.ReactNode;
+};
+
+export type HeadlessMenuSubItemProps = {
+    label: string;
+    href?: string;
+    classNames?: {
+        item?: string;
+        link?: string;
+        label?: string;
+    };
 };

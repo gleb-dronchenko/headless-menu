@@ -29,9 +29,20 @@ function App() {
                             <HeadlessMenu.Item label="Home" href="/" icon={HomeIcon} classNames={menuItemClassNames}/>
                             <HeadlessMenu.Item label="About" href="/about" icon={WorldIcon} classNames={menuItemClassNames}/>
                             <HeadlessMenu.Item label="Contact" href="/contact" icon={UserIcon} classNames={menuItemClassNames}/>
-                            <HeadlessMenu.Item label="Services" href="/services" icon={SettingsSlidersIcon} classNames={menuItemClassNames}/>
+                            <HeadlessMenu.Item label="Services" href="/services" icon={SettingsSlidersIcon} classNames={menuItemClassNames}>
+                                <HeadlessMenu.Subitem label="Services" href="/services" classNames={{
+                                    item: "hover:bg-zinc-100 hover:text-zinc-900"
+                                }}/>
+                            </HeadlessMenu.Item>
                             <HeadlessMenu.Item label="Products" href="/products" icon={EnvelopeIcon} classNames={menuItemClassNames}/>
-                            <HeadlessMenu.Item label="Settings" href="/settings" icon={SettingsIcon} classNames={menuItemClassNames}/>
+                            <HeadlessMenu.Item label="Settings" href="/settings" icon={SettingsIcon} classNames={menuItemClassNames}>
+                                <HeadlessMenu.Subitem label="Profile" href="/profile" classNames={{
+                                    item: "hover:bg-zinc-100 hover:text-zinc-900"
+                                }}/>
+                                <HeadlessMenu.Subitem label="Security" href="/security" classNames={{
+                                    item: "hover:bg-zinc-100 hover:text-zinc-900"
+                                }}/>
+                            </HeadlessMenu.Item>
                         </HeadlessMenu.List>
                         <HeadlessMenu.OpenBtn 
                             classNames={{
