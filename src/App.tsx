@@ -38,10 +38,10 @@ function App() {
             >
                 <HeadlessMenu.Sidebar className="flex flex-col gap-6 w-fit min-w-16 p-3 bg-white border-r border-zinc-200 shadow-sm">
                     <HeadlessMenu.ShortLogo>
-                        <div>HC</div>
+                        <div className="px-3 py-2">HC</div>
                     </HeadlessMenu.ShortLogo>
                     <HeadlessMenu.FullLogo>
-                        <div>HelloClient</div>
+                        <div className="px-3 py-2">HelloClient</div>
                     </HeadlessMenu.FullLogo>
                     <HeadlessMenu.List className="flex flex-col gap-0.5">
                         <HeadlessMenu.Item className="relative">
