@@ -26,3 +26,10 @@ export type HeadlessMenuSubItemProps = {
     };
     [key: string]: React.ComponentProps<React.ElementType>;
 };
+
+
+export type HeadlessMenuProps = {
+    isSidebarOpened: boolean;
+    setIsSidebarOpened: (isSidebarOpened: boolean) => void;
+    children: React.ReactNode;
+}

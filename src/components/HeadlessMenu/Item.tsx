@@ -23,23 +23,23 @@ export default function Item(
 
     const { isSidebarOpen } = useMenuContext();
     const hasSubmenu = Boolean(children);
-    const [isOpen, setIsOpen] = useState(false);
+    const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
     const itemRef = useRef<HTMLLIElement>(null);
 
     const Icon: React.ComponentType<React.SVGProps<SVGSVGElement>> | null = icon ?? null;
 
     // закрывать сабменю при изменении состояния sidebar
     useEffect(() => {
-        setIsOpen(false);
+        setIsSubmenuOpen(false);
     }, [isSidebarOpen]);
 
     useEffect(() => {
-        if (!isOpen) return;
+        if (!isSubmenuOpen) return;
 
         const onClickHandler = (event: MouseEvent) => {
             if (!itemRef.current) return;
             if (!itemRef.current?.contains(event.target as Node)) {
-                setIsOpen(false);
+                setIsSubmenuOpen(false);
             }
         };
 
@@ -47,7 +47,7 @@ export default function Item(
         document.addEventListener("click", onClickHandler);
         return () => 
             document.removeEventListener("click", onClickHandler);
-    }, [isOpen, isSidebarOpen]);
+    }, [isSubmenuOpen, isSidebarOpen]);
 
     const itemBody = (
         <>
@@ -71,7 +71,7 @@ export default function Item(
                     <button 
                         type="button"
                         className={classNames.link}
-                        onClick={() => setIsOpen((open) => !open)}
+                        onClick={() => setIsSubmenuOpen((open) => !open)}
                     >
                         {itemBody}
                     </button>
@@ -86,7 +86,7 @@ export default function Item(
                 )
             }
             
-            {hasSubmenu && isOpen ? (
+            {hasSubmenu && isSubmenuOpen ? (
                 <ul
                     className={isSidebarOpen ? classNames?.submenuAccordion : classNames?.submenuFlyout }
                 >

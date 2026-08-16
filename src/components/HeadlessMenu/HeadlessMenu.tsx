@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { MenuContext } from "./context";
 
 import Sidebar from "./Sidebar";
@@ -7,14 +6,15 @@ import Item from "./Item";
 import { ShortLogo, FullLogo } from "./Logo";
 import OpenBtn from "./OpenBtn";
 import Subitem from "./Subitem";
+import type { HeadlessMenuProps } from "./types";
 
 function HeadlessMenu(
-    { children }: { children: React.ReactNode }
+    props: HeadlessMenuProps,
 ) {
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const { isSidebarOpened, setIsSidebarOpened, children } = props;
 
     return (
-        <MenuContext.Provider value={{ isSidebarOpen, setIsSidebarOpen }}>
+        <MenuContext.Provider value={{ isSidebarOpen: isSidebarOpened, setIsSidebarOpen: setIsSidebarOpened }}>
             {children}
         </MenuContext.Provider>
     );

@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 import HeadlessMenu from "./components/HeadlessMenu/HeadlessMenu";
 import HomeIcon from "./assets/icons/home.svg";
 import UserIcon from "./assets/icons/user.svg";
@@ -18,10 +20,21 @@ const menuItemClassNames = {
 };
 
 function App() {
+    const [isSidebarOpened, setIsSidebarOpened] = useState(
+        () => localStorage.getItem("IS_SIDEBAR_OPENED") === "true"
+    );
+    
+    useEffect(() => {
+        localStorage.setItem("IS_SIDEBAR_OPENED", String(isSidebarOpened));
+    }, [isSidebarOpened]);
+
     return (
         <div className="flex flex-start flex-1 min-h-screen">
             <div className="flex flex-col gap-6 w-fit min-w-16 p-3 bg-white border-r border-zinc-200 shadow-sm">
-                <HeadlessMenu>
+                <HeadlessMenu 
+                    isSidebarOpened={isSidebarOpened} 
+                    setIsSidebarOpened={(isSidebarOpened: boolean) => setIsSidebarOpened(isSidebarOpened)}
+                >
                     <HeadlessMenu.Sidebar>
                         <HeadlessMenu.ShortLogo>
                             <div>HC</div>
