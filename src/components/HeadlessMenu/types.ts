@@ -1,9 +1,9 @@
 type Icon = React.ComponentType<React.SVGProps<SVGSVGElement>>;
 
 export type HeadlessMenuItemProps = {
+    as?: React.ElementType;
     label: string;
     icon?: Icon;
-    href?: string;
     classNames?: {
         item: string;
         link: string;
@@ -11,14 +11,16 @@ export type HeadlessMenuItemProps = {
         label: string;
     };
     children?: React.ReactNode;
+    [key: string]: React.ComponentProps<React.ElementType>;
 };
 
 export type HeadlessMenuSubItemProps = {
+    as?: React.ElementType;
     label: string;
-    href?: string;
     classNames?: {
         item?: string;
         link?: string;
         label?: string;
     };
+    [key: string]: React.ComponentProps<React.ElementType>;
 };

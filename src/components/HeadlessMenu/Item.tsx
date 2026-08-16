@@ -1,15 +1,14 @@
 import { useRef, useState, useEffect } from 'react';
 import type { HeadlessMenuItemProps } from './types';
 import { useMenuContext } from './hooks';
-import { NavLink } from 'react-router-dom';
 
 export default function Item(
     props: HeadlessMenuItemProps,
 ) {
     const {
+        as: LinkComponent = 'a',
         label,
         icon,
-        href,
         classNames = {
             item: '',
             link: '',
@@ -17,6 +16,7 @@ export default function Item(
             label: '',
         },
         children,
+        ...rest
     } = props;
 
     const { isSidebarOpen } = useMenuContext();
@@ -63,37 +63,36 @@ export default function Item(
     );
     
     return (
-            <li ref={itemRef} className={classNames?.item ?? ''}>
-                {
-                    hasSubmenu ? (
-                        <button 
-                            type="button"
-                            className={classNames.link}
-                            onClick={() => setIsOpen((open) => !open)}
-                        >
-                            {itemBody}
-                        </button>
-
-                    ) : (
-                        <NavLink 
-                            to={href ?? ''} 
-                            className={classNames?.link}
-                        >
-                            {itemBody}
-                        </NavLink>
-                    )
-                }
-                
-                {hasSubmenu && isOpen ? (
-                    <ul
-                        className={[
-                            isSidebarOpen ? "flex flex-col gap-0.5 mt-1 pl-6" : "absolute left-full top-full z-50 ml-2 min-w-[12rem] rounded-lg border border-zinc-200 bg-white shadow-lg px-4 py-2 ",
-                        ].join(" ")}
+        <li ref={itemRef} className={classNames?.item ?? ''}>
+            {
+                hasSubmenu ? (
+                    <button 
+                        type="button"
+                        className={classNames.link}
+                        onClick={() => setIsOpen((open) => !open)}
                     >
-                        {children}
-                    </ul>
-                ) : null}
-            </li>
-        
+                        {itemBody}
+                    </button>
+
+                ) : (
+                    <LinkComponent 
+                        {...rest}
+                        className={classNames?.link}
+                    >
+                        {itemBody}
+                    </LinkComponent>
+                )
+            }
+            
+            {hasSubmenu && isOpen ? (
+                <ul
+                    className={[
+                        isSidebarOpen ? "flex flex-col gap-0.5 mt-1 pl-6" : "absolute left-full top-full z-50 ml-2 min-w-[12rem] rounded-lg border border-zinc-200 bg-white shadow-lg px-4 py-2 ",
+                    ].join(" ")}
+                >
+                    {children}
+                </ul>
+            ) : null}
+        </li>
     );
 }

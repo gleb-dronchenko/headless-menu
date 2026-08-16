@@ -5,7 +5,7 @@ import WorldIcon from "./assets/icons/world.svg";
 import SettingsIcon from "./assets/icons/settings.svg";
 import SettingsSlidersIcon from "./assets/icons/settings-sliders.svg";
 import EnvelopeIcon from "./assets/icons/envelope.svg";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, NavLink } from "react-router-dom";
 
 const menuItemClassNames = {
     item: "relative",
@@ -27,20 +27,20 @@ function App() {
                             <div>HelloClient</div>
                         </HeadlessMenu.FullLogo>
                         <HeadlessMenu.List>
-                            <HeadlessMenu.Item label="Home" href="/" icon={HomeIcon} classNames={menuItemClassNames}/>
-                            <HeadlessMenu.Item label="About" href="/about" icon={WorldIcon} classNames={menuItemClassNames}/>
-                            <HeadlessMenu.Item label="Contact" href="/contact" icon={UserIcon} classNames={menuItemClassNames}/>
-                            <HeadlessMenu.Item label="Services" href="/services" icon={SettingsSlidersIcon} classNames={menuItemClassNames}>
-                                <HeadlessMenu.Subitem label="Services" href="/services" classNames={{
+                            <HeadlessMenu.Item as={NavLink} label="Home" to="/" icon={HomeIcon} classNames={menuItemClassNames}/>
+                            <HeadlessMenu.Item as={NavLink} label="About" to="/about" icon={WorldIcon} classNames={menuItemClassNames}/>
+                            <HeadlessMenu.Item as={NavLink} label="Contact" to="/contact" icon={UserIcon} classNames={menuItemClassNames}/>
+                            <HeadlessMenu.Item label="Services" icon={SettingsSlidersIcon} classNames={menuItemClassNames}>
+                                <HeadlessMenu.Subitem as={NavLink} label="Services" to="/services" classNames={{
                                     item: "hover:bg-zinc-100 hover:text-zinc-900"
                                 }}/>
                             </HeadlessMenu.Item>
-                            <HeadlessMenu.Item label="Products" href="/products" icon={EnvelopeIcon} classNames={menuItemClassNames}/>
-                            <HeadlessMenu.Item label="Settings" href="/settings" icon={SettingsIcon} classNames={menuItemClassNames}>
-                                <HeadlessMenu.Subitem label="Profile" href="/profile" classNames={{
+                            <HeadlessMenu.Item as={NavLink} label="Products" to="/products" icon={EnvelopeIcon} classNames={menuItemClassNames}/>
+                            <HeadlessMenu.Item label="Settings" icon={SettingsIcon} classNames={menuItemClassNames}>
+                                <HeadlessMenu.Subitem as={NavLink} label="Profile" to="/profile" classNames={{
                                     item: "hover:bg-zinc-100 hover:text-zinc-900"
                                 }}/>
-                                <HeadlessMenu.Subitem label="Security" href="/security" classNames={{
+                                <HeadlessMenu.Subitem as={NavLink} label="Security" to="/security" classNames={{
                                     item: "hover:bg-zinc-100 hover:text-zinc-900"
                                 }}/>
                             </HeadlessMenu.Item>

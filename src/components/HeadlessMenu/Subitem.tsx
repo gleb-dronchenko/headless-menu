@@ -1,21 +1,23 @@
 import type { HeadlessMenuSubItemProps } from "./types";
-import { NavLink } from 'react-router-dom';
 
 export default function SubItem({
-  label,
-  href,
-  classNames = {
-    item: '',
-    link: '',
-    label: '',
-  },
+    as: LinkComponent = 'a',
+    label,
+    classNames = {
+        item: '',
+        link: '',
+        label: '',
+    },
+    ...rest
 }: HeadlessMenuSubItemProps) {
-
     return (
         <li className={classNames.item}>
-            <NavLink to={href ?? ''} className={classNames.link ?? ''}>
+            <LinkComponent 
+                {...rest}
+                className={classNames.link ?? ''}
+            >
                 <span className={classNames.label}>{label}</span>
-            </NavLink>
+            </LinkComponent>
         </li>
     );
 }
