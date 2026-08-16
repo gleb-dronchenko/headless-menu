@@ -5,6 +5,7 @@ import WorldIcon from "./assets/icons/world.svg";
 import SettingsIcon from "./assets/icons/settings.svg";
 import SettingsSlidersIcon from "./assets/icons/settings-sliders.svg";
 import EnvelopeIcon from "./assets/icons/envelope.svg";
+import { Routes, Route } from "react-router-dom";
 
 const menuItemClassNames = {
     item: "relative",
@@ -56,7 +57,16 @@ function App() {
                 </HeadlessMenu>
             </div>
             <div className="flex flex-1 flex-col bg-zinc-50 text-zinc-900 p-8">
-                <div>Hello, world!</div>
+                <Routes>
+                    <Route path="/" element={<div>Home</div>} />
+                    <Route path="/about" element={<div>About</div>} />
+                    <Route path="/contact" element={<div>Contact</div>} />
+                    <Route path="/services" element={<div>Services</div>} />
+                    <Route path="/products" element={<div>Products</div>} />
+                    <Route path="/settings" element={<div>Settings</div>} />
+                    <Route path="/profile" element={<div>Profile</div>} />
+                    <Route path="/security" element={<div>Security</div>} />
+                </Routes>
             </div>
         </div>
     );

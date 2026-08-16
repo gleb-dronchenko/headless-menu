@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import type { HeadlessMenuItemProps } from './types';
 import { useMenuContext } from './hooks';
+import { NavLink } from 'react-router-dom';
 
 export default function Item(
     props: HeadlessMenuItemProps,
@@ -74,12 +75,12 @@ export default function Item(
                         </button>
 
                     ) : (
-                        <a 
-                            href={href} 
+                        <NavLink 
+                            to={href ?? ''} 
                             className={classNames?.link}
                         >
                             {itemBody}
-                        </a>
+                        </NavLink>
                     )
                 }
                 
