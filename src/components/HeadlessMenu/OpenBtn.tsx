@@ -1,7 +1,7 @@
-import AngleRightIcon from '../../assets/icons/angle-right.svg';
 import { useMenuContext } from './hooks';
 
 type OpenBtnProps = {
+    icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
     classNames: {
         container: string;
         button: string;
@@ -9,9 +9,10 @@ type OpenBtnProps = {
         iconOpened: string;
     }    
 }
-export default function OpenBtn({ classNames }: OpenBtnProps) {
+export default function OpenBtn({ classNames, icon }: OpenBtnProps) {
     const { isSidebarOpen, setIsSidebarOpen } = useMenuContext();
-    
+    const Icon: React.ComponentType<React.SVGProps<SVGSVGElement>> = icon;
+
     return (
         <div className={classNames?.container}>
             <button
@@ -19,10 +20,10 @@ export default function OpenBtn({ classNames }: OpenBtnProps) {
                 onClick={() => setIsSidebarOpen(!isSidebarOpen)}
                 className={classNames?.button}
             >
-                <AngleRightIcon
+                <Icon
                     className={[
                         classNames?.icon,
-                        (isSidebarOpen ? classNames?.iconOpened : {}),
+                        (isSidebarOpen ? classNames?.iconOpened : ''),
                     ].join(' ')}
                 />
             </button>

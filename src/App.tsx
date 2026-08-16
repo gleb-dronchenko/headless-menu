@@ -5,6 +5,7 @@ import WorldIcon from "./assets/icons/world.svg";
 import SettingsIcon from "./assets/icons/settings.svg";
 import SettingsSlidersIcon from "./assets/icons/settings-sliders.svg";
 import EnvelopeIcon from "./assets/icons/envelope.svg";
+import AngleRightIcon from "./assets/icons/angle-right.svg";
 import { Routes, Route, NavLink } from "react-router-dom";
 
 const menuItemClassNames = {
@@ -12,6 +13,8 @@ const menuItemClassNames = {
     link: "flex items-center gap-3 rounded-lg px-3 py-2 text-zinc-700 hover:bg-zinc-100 hover:text-zinc-900 transition-colors",
     icon: "fill-current shrink-0 w-[20px] h-[20px]",
     label: "text-sm font-medium whitespace-nowrap",
+    submenuAccordion: "flex flex-col gap-0.5 mt-1 pl-6",
+    submenuFlyout: "absolute left-full top-full z-50 ml-2 min-w-[12rem] rounded-lg border border-zinc-200 bg-white shadow-lg px-4 py-2 ",
 };
 
 function App() {
@@ -46,6 +49,7 @@ function App() {
                             </HeadlessMenu.Item>
                         </HeadlessMenu.List>
                         <HeadlessMenu.OpenBtn 
+                            icon={AngleRightIcon}
                             classNames={{
                                 container: "flex justify-end px-1",
                                 button: "flex items-center justify-center rounded-lg p-2 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900",

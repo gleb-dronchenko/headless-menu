@@ -9,6 +9,8 @@ export type HeadlessMenuItemProps = {
         link: string;
         icon: string;
         label: string;
+        submenuAccordion: string;
+        submenuFlyout: string;
     };
     children?: React.ReactNode;
     [key: string]: React.ComponentProps<React.ElementType>;

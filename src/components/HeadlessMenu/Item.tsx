@@ -14,6 +14,8 @@ export default function Item(
             link: '',
             icon: '',
             label: '',
+            submenuAccordion: '',
+            submenuFlyout: '',
         },
         children,
         ...rest
@@ -86,9 +88,7 @@ export default function Item(
             
             {hasSubmenu && isOpen ? (
                 <ul
-                    className={[
-                        isSidebarOpen ? "flex flex-col gap-0.5 mt-1 pl-6" : "absolute left-full top-full z-50 ml-2 min-w-[12rem] rounded-lg border border-zinc-200 bg-white shadow-lg px-4 py-2 ",
-                    ].join(" ")}
+                    className={isSidebarOpen ? classNames?.submenuAccordion : classNames?.submenuFlyout }
                 >
                     {children}
                 </ul>
