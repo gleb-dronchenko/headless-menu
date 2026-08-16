@@ -30,17 +30,24 @@ export type HeadlessMenuSubmenuProps = {
     children?: ReactNode;
 };
 
+export type HeadlessMenuLabelProps = {
+    className?: string;
+    children?: ReactNode;
+};
+
 export type HeadlessMenuOpenBtnProps = {
     className?: string;
     children?: ReactNode;
 };
 
-export type HeadlessMenuSidebarProps = { 
-    children: ReactNode,
+export type HeadlessMenuSidebarProps = {
+    className?: string;
+    children?: ReactNode;
 };
 
 export type HeadlessMenuListProps = {
-    children: ReactNode;
+    className?: string;
+    children?: ReactNode;
 };
 
 export type HeadlessMenuLogoProps = {

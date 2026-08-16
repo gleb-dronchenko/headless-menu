@@ -1,21 +1,23 @@
-import { useItemContext } from './hooks';
+import { useItemContext, useMenuContext } from './hooks';
 import type { HeadlessMenuSubmenuProps } from './types';
 
 export default function Submenu(
     props: HeadlessMenuSubmenuProps,
 ) {
-    const {
-        className,
-        children,
-    } = props;
+    const { children, ...rest } = props;
     const { isSubmenuOpen } = useItemContext();
+    const { isSidebarOpen } = useMenuContext();
 
     if (!isSubmenuOpen) {
         return null;
     }
 
     return (
-        <ul className={className}>
+        <ul
+            {...rest}
+            data-open=""
+            data-orientation={isSidebarOpen ? 'vertical' : 'horizontal'}
+        >
             {children}
         </ul>
     );

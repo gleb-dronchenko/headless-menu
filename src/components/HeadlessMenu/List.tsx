@@ -3,9 +3,13 @@ import type { HeadlessMenuListProps } from './types';
 export default function List(
     props: HeadlessMenuListProps,
 ) {
-    const { children } = props;
+    const {
+        children,
+        ...rest
+    } = props;
+
     return (
-        <ul>
+        <ul {...rest}>
             {children}
         </ul>
     );

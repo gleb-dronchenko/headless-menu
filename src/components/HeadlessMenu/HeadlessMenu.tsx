@@ -8,6 +8,7 @@ import OpenBtn from "./OpenBtn";
 import Subitem from "./Subitem";
 import Submenu from "./Submenu";
 import Trigger from "./Trigger";
+import Label from "./Label";
 import type { HeadlessMenuProps } from "./types";
 
 function HeadlessMenu(
@@ -31,5 +32,6 @@ HeadlessMenu.Trigger = Trigger;
 HeadlessMenu.OpenBtn = OpenBtn;
 HeadlessMenu.Subitem = Subitem;
 HeadlessMenu.Submenu = Submenu;
+HeadlessMenu.Label = Label;
 
 export default HeadlessMenu;

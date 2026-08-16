@@ -8,6 +8,7 @@ export default function OpenBtn({ className, children }: HeadlessMenuOpenBtnProp
         <button
             type="button"
             className={className}
+            data-open={isSidebarOpen ? '' : undefined}
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
         >
             {children}
