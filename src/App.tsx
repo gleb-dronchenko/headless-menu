@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import HeadlessMenu from "./components/HeadlessMenu/HeadlessMenu";
+import Menu from "./components/Menu/Menu";
 import HomeIcon from "./assets/icons/home.svg";
 import UserIcon from "./assets/icons/user.svg";
 import WorldIcon from "./assets/icons/world.svg";
@@ -22,106 +22,105 @@ import {
     logoClass,
     listClass,
     itemClass,
-    openBtnWrapClass,
-    openBtnClass,
-    openBtnIconClass,
+    toggleWrapClass,
+    toggleClass,
+    toggleIconClass,
 } from "./appClasses";
 
 // собираем и передаем готовыми слотами.
-// HeadlessMenu не ищет служебные элементы в children и остается
-// приложение само решает, какой слот использовать и как его стилизовать.
+// приложение само решает, какой слот использовать и как его стилизовать (компонент меню не ищет в children служебные элементы).
 function getSheetSlots() {
     return {
-        overlay: <HeadlessMenu.Overlay />,
-        title: <HeadlessMenu.Title />,
+        overlay: <Menu.Overlay />,
+        title: <Menu.Title />,
         close: (
-            <HeadlessMenu.Close aria-label="Close">
+            <Menu.Close aria-label="Close">
                 <CloseIcon />
-            </HeadlessMenu.Close>
+            </Menu.Close>
         ),
     };
 }
 
 function App() {
-    const [isSidebarOpened, setIsSidebarOpened] = useState(
-        () => localStorage.getItem("IS_SIDEBAR_OPENED") === "true"
+    const [isSidebarOpen, setIsSidebarOpen] = useState(
+        () => localStorage.getItem("IS_SIDEBAR_OPEN") === "true"
     );
     
     useEffect(() => {
-        localStorage.setItem("IS_SIDEBAR_OPENED", String(isSidebarOpened));
-    }, [isSidebarOpened]);
+        localStorage.setItem("IS_SIDEBAR_OPEN", String(isSidebarOpen));
+    }, [isSidebarOpen]);
 
     return (
         <div className={layoutClass}>
-            <HeadlessMenu 
-                isSidebarOpened={isSidebarOpened} 
-                setIsSidebarOpened={setIsSidebarOpened}
+            <Menu 
+                isSidebarOpen={isSidebarOpen} 
+                setIsSidebarOpen={setIsSidebarOpen}
             >
-                <HeadlessMenu.Sidebar className={sidebarClass}>
-                    <HeadlessMenu.ShortLogo>
+                <Menu.Sidebar className={sidebarClass}>
+                    <Menu.ShortLogo>
                         <div className={logoClass}>HC</div>
-                    </HeadlessMenu.ShortLogo>
-                    <HeadlessMenu.FullLogo>
+                    </Menu.ShortLogo>
+                    <Menu.FullLogo>
                         <div className={logoClass}>HelloClient</div>
-                    </HeadlessMenu.FullLogo>
-                    <HeadlessMenu.List className={listClass}>
-                        <HeadlessMenu.Item className={itemClass}>
-                            <HeadlessMenu.Trigger asComponent={NavLink} to="/" className={itemControlClass}>
+                    </Menu.FullLogo>
+                    <Menu.List className={listClass}>
+                        <Menu.Item className={itemClass}>
+                            <Menu.Trigger asComponent={NavLink} to="/" className={itemControlClass}>
                                 <HomeIcon className={itemIconClass} />
-                                <HeadlessMenu.Label className={itemLabelClass}>Home</HeadlessMenu.Label>
-                            </HeadlessMenu.Trigger>
-                        </HeadlessMenu.Item>
-                        <HeadlessMenu.Item className={itemClass}>
-                            <HeadlessMenu.Trigger asComponent={NavLink} to="/about" className={itemControlClass}>
+                                <Menu.Label className={itemLabelClass}>Home</Menu.Label>
+                            </Menu.Trigger>
+                        </Menu.Item>
+                        <Menu.Item className={itemClass}>
+                            <Menu.Trigger asComponent={NavLink} to="/about" className={itemControlClass}>
                                 <WorldIcon className={itemIconClass} />
-                                <HeadlessMenu.Label className={itemLabelClass}>About</HeadlessMenu.Label>
-                            </HeadlessMenu.Trigger>
-                        </HeadlessMenu.Item>
-                        <HeadlessMenu.Item className={itemClass}>
-                            <HeadlessMenu.Trigger asComponent={NavLink} to="/contact" className={itemControlClass}>
+                                <Menu.Label className={itemLabelClass}>About</Menu.Label>
+                            </Menu.Trigger>
+                        </Menu.Item>
+                        <Menu.Item className={itemClass}>
+                            <Menu.Trigger asComponent={NavLink} to="/contact" className={itemControlClass}>
                                 <UserIcon className={itemIconClass} />
-                                <HeadlessMenu.Label className={itemLabelClass}>Contact</HeadlessMenu.Label>
-                            </HeadlessMenu.Trigger>
-                        </HeadlessMenu.Item>
-                        <HeadlessMenu.Item className={itemClass}>
-                            <HeadlessMenu.Trigger className={itemControlClass}>
+                                <Menu.Label className={itemLabelClass}>Contact</Menu.Label>
+                            </Menu.Trigger>
+                        </Menu.Item>
+                        <Menu.Item className={itemClass}>
+                            <Menu.Trigger className={itemControlClass}>
                                 <SettingsSlidersIcon className={itemIconClass} />
-                                <HeadlessMenu.Label className={itemLabelClass}>Services</HeadlessMenu.Label>
-                            </HeadlessMenu.Trigger>
-                            <HeadlessMenu.Submenu className={submenuClass} {...getSheetSlots()}>
-                                <HeadlessMenu.Subitem asComponent={NavLink} to="/services" className={subitemClass}>
+                                <Menu.Label className={itemLabelClass}>Services</Menu.Label>
+                            </Menu.Trigger>
+                            <Menu.Submenu className={submenuClass} {...getSheetSlots()}>
+                                <Menu.SubItem asComponent={NavLink} to="/services" className={subitemClass}>
                                     Services
-                                </HeadlessMenu.Subitem>
-                            </HeadlessMenu.Submenu>
-                        </HeadlessMenu.Item>
-                        <HeadlessMenu.Item className={itemClass}>
-                            <HeadlessMenu.Trigger asComponent={NavLink} to="/products" className={itemControlClass}>
+                                </Menu.SubItem>
+                            </Menu.Submenu>
+                        </Menu.Item>
+                        <Menu.Item className={itemClass}>
+                            <Menu.Trigger asComponent={NavLink} to="/products" className={itemControlClass}>
                                 <EnvelopeIcon className={itemIconClass} />
-                                <HeadlessMenu.Label className={itemLabelClass}>Products</HeadlessMenu.Label>
-                            </HeadlessMenu.Trigger>
-                        </HeadlessMenu.Item>
-                        <HeadlessMenu.Item className={itemClass}>
-                            <HeadlessMenu.Trigger className={itemControlClass}>
+                                <Menu.Label className={itemLabelClass}>Products</Menu.Label>
+                            </Menu.Trigger>
+                        </Menu.Item>
+                        <Menu.Item className={itemClass}>
+                            <Menu.Trigger className={itemControlClass}>
                                 <SettingsIcon className={itemIconClass} />
-                                <HeadlessMenu.Label className={itemLabelClass}>Settings</HeadlessMenu.Label>
-                            </HeadlessMenu.Trigger>
-                            <HeadlessMenu.Submenu className={submenuClass} {...getSheetSlots()}>
-                                <HeadlessMenu.Subitem asComponent={NavLink} to="/profile" className={subitemClass}>
+                                <Menu.Label className={itemLabelClass}>Settings</Menu.Label>
+                            </Menu.Trigger>
+                            <Menu.Submenu className={submenuClass} {...getSheetSlots()}>
+                                <Menu.SubItem asComponent={NavLink} to="/profile" className={subitemClass}>
                                     Profile
-                                </HeadlessMenu.Subitem>
-                                <HeadlessMenu.Subitem asComponent={NavLink} to="/security" className={subitemClass}>
+                                </Menu.SubItem>
+                                <Menu.SubItem asComponent={NavLink} to="/security" className={subitemClass}>
                                     Security
-                                </HeadlessMenu.Subitem>
-                            </HeadlessMenu.Submenu>
-                        </HeadlessMenu.Item>
-                    </HeadlessMenu.List>
-                    <div className={openBtnWrapClass}>
-                        <HeadlessMenu.OpenBtn className={openBtnClass}>
-                            <AngleRightIcon className={openBtnIconClass} />
-                        </HeadlessMenu.OpenBtn>
+                                </Menu.SubItem>
+                            </Menu.Submenu>
+                        </Menu.Item>
+                    </Menu.List>
+                    <div className={toggleWrapClass}>
+                        <Menu.Toggle className={toggleClass}>
+                            <AngleRightIcon className={toggleIconClass} />
+                        </Menu.Toggle>
                     </div>
-                </HeadlessMenu.Sidebar>
-            </HeadlessMenu>
+                </Menu.Sidebar>
+            </Menu>
             <div className={contentClass}>
                 <Routes>
                     <Route path="/" element={<div>Home</div>} />

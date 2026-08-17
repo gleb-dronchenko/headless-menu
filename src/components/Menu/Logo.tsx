@@ -1,8 +1,8 @@
 import { useMenuContext } from './hooks';
-import type { HeadlessMenuLogoProps } from './types';
+import type { MenuLogoProps } from './types';
 
 export function ShortLogo(
-    { children }: HeadlessMenuLogoProps,
+    { children }: MenuLogoProps,
 ) {
     const { isSidebarOpen, isMobile } = useMenuContext();
     
@@ -16,7 +16,7 @@ export function ShortLogo(
 }
 
 export function FullLogo(
-    { children }: HeadlessMenuLogoProps,
+    { children }: MenuLogoProps,
 ) {
     const { isSidebarOpen, isMobile } = useMenuContext();
     

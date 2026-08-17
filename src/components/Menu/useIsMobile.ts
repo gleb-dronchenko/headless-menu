@@ -12,7 +12,7 @@ function getIsMobile(query: string) {
     return window.matchMedia(query).matches;
 }
 
-export function useViewportController(query = DEFAULT_MOBILE_QUERY) {
+export function useIsMobile(query = DEFAULT_MOBILE_QUERY) {
     const [isMobile, setIsMobile] = useState(() => getIsMobile(query));
 
     useEffect(() => {
@@ -31,5 +31,5 @@ export function useViewportController(query = DEFAULT_MOBILE_QUERY) {
         };
     }, [query]);
 
-    return { isMobile };
+    return isMobile;
 }

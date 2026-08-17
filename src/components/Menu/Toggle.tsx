@@ -1,8 +1,8 @@
 import { useMenuContext } from './hooks';
-import type { HeadlessMenuOpenBtnProps } from './types';
+import type { MenuToggleProps } from './types';
 
-export default function OpenBtn(
-    props: HeadlessMenuOpenBtnProps,
+export default function Toggle(
+    props: MenuToggleProps,
 ) {
     const {
         className,

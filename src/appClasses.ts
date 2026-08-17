@@ -124,15 +124,15 @@ export const listClass = [
 
 export const itemClass = "relative group";
 
-export const openBtnWrapClass = "flex justify-end px-1 group-data-[viewport=mobile]:hidden";
+export const toggleWrapClass = "flex justify-end px-1 group-data-[viewport=mobile]:hidden";
 
-export const openBtnClass = [
+export const toggleClass = [
     "group flex items-center justify-center",
     "rounded-lg p-2",
     "text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900",
 ].join(" ");
 
-export const openBtnIconClass = [
+export const toggleIconClass = [
     "fill-current",
     "transition-transform duration-200",
     "w-[16px] h-[16px]",

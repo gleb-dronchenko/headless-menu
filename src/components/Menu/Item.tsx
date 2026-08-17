@@ -2,17 +2,16 @@ import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { ItemContext } from './context';
 import { useMenuContext } from './hooks';
 import { getViewport } from './helpers';
-import type { HeadlessMenuItemProps } from './types';
+import type { MenuItemProps } from './types';
 
 export default function Item(
-    props: HeadlessMenuItemProps,
+    props: MenuItemProps,
 ) {
     const {
         children,
         className,
     } = props;
     const { isSidebarOpen, isMobile } = useMenuContext();
-    // локальный UI-стейт
     const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
     const [label, setLabel] = useState<ReactNode>(null);
     
@@ -26,7 +25,7 @@ export default function Item(
         setIsSubmenuOpen(false);
     };
 
-    // закрывать сабменю при смене sidebar или брейкпоинта
+    // закрываем подменю чтобы не переносить старое состояние между desktop и mobile
     useEffect(() => {
         setIsSubmenuOpen(false);
     }, [isSidebarOpen, isMobile]);
@@ -41,7 +40,7 @@ export default function Item(
                 setIsSubmenuOpen(false);
             }
         };
-        // закрывать сабменю при клике вне него        
+        // закрываем подменю по клику вне Item
         document.addEventListener('click', onClickHandler);
 
         return () =>

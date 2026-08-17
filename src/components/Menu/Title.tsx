@@ -1,8 +1,8 @@
 import { useItemContext } from './hooks';
-import type { HeadlessMenuTitleProps } from './types';
+import type { MenuTitleProps } from './types';
 
 export default function Title(
-    props: HeadlessMenuTitleProps,
+    props: MenuTitleProps,
 ) {
     const {
         ...rest

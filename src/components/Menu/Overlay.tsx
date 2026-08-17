@@ -1,8 +1,8 @@
 import { useItemContext } from './hooks';
-import type { HeadlessMenuOverlayProps } from './types';
+import type { MenuOverlayProps } from './types';
 
 export default function Overlay(
-    props: HeadlessMenuOverlayProps,
+    props: MenuOverlayProps,
 ) {
     const { closeSubmenu } = useItemContext();
 

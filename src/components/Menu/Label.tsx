@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useItemContext, useMenuContext } from './hooks';
 import { getViewport } from './helpers';
-import type { HeadlessMenuLabelProps } from './types';
+import type { MenuLabelProps } from './types';
 
 export default function Label(
-    props: HeadlessMenuLabelProps,
+    props: MenuLabelProps,
 ) {
     const {
         children,

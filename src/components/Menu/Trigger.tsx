@@ -1,10 +1,10 @@
 import type { ElementType } from 'react';
 import { useItemContext, useMenuContext } from './hooks';
 import { getViewport } from './helpers';
-import type { HeadlessMenuTriggerProps } from './types';
+import type { MenuTriggerProps } from './types';
 
 export default function Trigger(
-    props: HeadlessMenuTriggerProps,
+    props: MenuTriggerProps,
 ) {
     const {
         asComponent,
@@ -17,7 +17,7 @@ export default function Trigger(
     const viewport = getViewport(isMobile);
 
     if (!asComponent) {
-        // для открытия сабменю
+        // без внешнего компонента Trigger сам управляет открытием подменю
         return (
             <button
                 type="button"
@@ -30,6 +30,8 @@ export default function Trigger(
         );
     }
 
+    // если снаружи передали любой другой компонент для роутинга
+    // меню только прокидывает props 
     const LinkComponent: ElementType = asComponent;
 
     return (

@@ -1,9 +1,9 @@
 import type { MouseEvent } from 'react';
 import { useItemContext } from './hooks';
-import type { HeadlessMenuCloseProps } from './types';
+import type { MenuCloseProps } from './types';
 
 export default function Close(
-    props: HeadlessMenuCloseProps,
+    props: MenuCloseProps,
 ) {
     const {
         children,

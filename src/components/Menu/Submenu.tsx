@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useItemContext, useMenuContext } from './hooks';
-import type { HeadlessMenuSubmenuProps } from './types';
+import type { MenuSubmenuProps } from './types';
 
 export default function Submenu(
-    props: HeadlessMenuSubmenuProps,
+    props: MenuSubmenuProps,
 ) {
     const { 
         overlay,

@@ -1,9 +1,9 @@
 import type { ElementType, MouseEvent } from 'react';
 import { useItemContext, useMenuContext } from './hooks';
-import type { HeadlessMenuSubItemProps } from './types';
+import type { MenuSubItemProps } from './types';
 
-export default function Subitem(
-    props: HeadlessMenuSubItemProps,
+export default function SubItem(
+    props: MenuSubItemProps,
 ) {
     const {
         asComponent = 'a',
@@ -22,12 +22,11 @@ export default function Subitem(
                 className={className}
                 {...rest}
                 onClick={(event: MouseEvent<HTMLElement>) => {
-                    // проверяем наличие обработчика onClick в props (поле опциональное)
                     if (typeof onClickHandler === 'function') {
                         onClickHandler(event);
                     }
 
-                    // закрыть сабменю в мобильной версии
+                    // в мобильной версии закрываем после перехода
                     if (isMobile) {
                         closeSubmenu();
                     }
