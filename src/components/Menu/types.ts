@@ -1,4 +1,4 @@
-import type { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ElementType, MouseEvent, ReactNode } from 'react';
 
 export type MenuProps = {
     // внешний стейт
@@ -18,19 +18,20 @@ export type MenuTriggerProps = {
     /* для рендера внешнего компонента (например NavLink из react-router-dom)
        и передачи его props через to, href и т.д. */
     asComponent?: ElementType;
-    className?: string;
-    children?: ReactNode;
-    [key: string]: unknown;
-};
+    to?: string;
+    onClick?: (event: MouseEvent<HTMLElement>) => void;
+    //исключаем onClick из ComponentPropsWithoutRef<'a'>
+
+} & Omit<ComponentPropsWithoutRef<'a'>, 'onClick'>;
 
 export type MenuSubItemProps = {
     /* меню отдает рендер ссылок наружу и не зависит от роутера.
        props ссылки (to, href и т.д.) прокидываются в asComponent */
     asComponent?: ElementType;
-    className?: string;
-    children?: ReactNode;
-    [key: string]: unknown;
-};
+    to?: string;
+    onClick?: (event: MouseEvent<HTMLElement>) => void;
+    //исключаем onClick из ComponentPropsWithoutRef<'a'>
+} & Omit<ComponentPropsWithoutRef<'a'>, 'onClick'>;
 
 export type MenuSubmenuProps = {
     className?: string;
