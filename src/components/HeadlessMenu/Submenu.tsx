@@ -16,7 +16,8 @@ export default function Submenu(
     const { isSubmenuOpen } = useItemContext();
     const { isSidebarOpen, isMobile } = useMenuContext();
 
-    // запретить скролл в мобильной версии при открытом сабменю
+    // мобильное подменю открывается поверх страницы,
+    // поэтому блокируем прокрутку body.
     useEffect(() => {
         if (!isMobile || !isSubmenuOpen) {
             return;
@@ -35,12 +36,13 @@ export default function Submenu(
     }
 
     if (isMobile) {
-        // отрисовываем сабменю в портале
+        // мобильный вариант отрисовывается в портале.
         return createPortal(
             <div
                 {...rest}
                 data-open=""
-                data-orientation="sheet"
+                // `sheet` — мобильный полноэкранный вариант в портале.
+                data-variant="sheet"
             >
                 {overlay}
                 <div data-part="panel">
@@ -63,7 +65,9 @@ export default function Submenu(
         <ul
             {...rest}
             data-open=""
-            data-orientation={isSidebarOpen ? 'vertical' : 'horizontal'}
+            // `inline` — вложенный список в раскрытом сайдбаре,
+            // `flyout` — попап рядом со свёрнутым сайдбаром.
+            data-variant={isSidebarOpen ? 'inline' : 'flyout'}
         >
             {children}
         </ul>
