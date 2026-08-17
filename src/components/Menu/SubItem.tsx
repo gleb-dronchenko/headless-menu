@@ -13,7 +13,7 @@ export default function SubItem(
         ...rest
     } = props;
     const { closeSubmenu } = useItemContext();
-    const { isMobile } = useMenuContext();
+    const { isMobile, isSidebarOpen } = useMenuContext();
     const LinkComponent: ElementType = asComponent;
 
     return (
@@ -26,8 +26,9 @@ export default function SubItem(
                         onClickHandler(event);
                     }
 
-                    // в мобильной версии закрываем после перехода
-                    if (isMobile) {
+                    /* sheet и flyout закрываем после перехода.
+                       inline в раскрытом сайдбаре оставляем открытым */
+                    if (isMobile || !isSidebarOpen) {
                         closeSubmenu();
                     }
                 }}
