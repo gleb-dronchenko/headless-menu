@@ -30,8 +30,8 @@ export default function Trigger(
         );
     }
 
-    // если снаружи передали любой другой компонент для роутинга
-    // меню только прокидывает props 
+    /* если снаружи передали любой другой компонент для роутинга,
+       меню только прокидывает props */ 
     const LinkComponent: ElementType = asComponent;
 
     return (

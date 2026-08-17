@@ -25,7 +25,8 @@ export default function Item(
         setIsSubmenuOpen(false);
     };
 
-    // закрываем подменю чтобы не переносить старое состояние между desktop и mobile
+    /* закрываем подменю, чтобы не переносить старое состояние
+       между desktop и mobile */
     useEffect(() => {
         setIsSubmenuOpen(false);
     }, [isSidebarOpen, isMobile]);

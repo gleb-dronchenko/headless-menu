@@ -15,20 +15,20 @@ export type MenuItemProps = {
 };
 
 export type MenuTriggerProps = {
-    // для рендера внешнего компонента (например NavLink из react-router-dom)
+    /* для рендера внешнего компонента (например NavLink из react-router-dom)
+       и передачи его props через to, href и т.д. */
     asComponent?: ElementType;
     className?: string;
     children?: ReactNode;
-    //для передачи props для ссылок через to или href и т.д.
     [key: string]: unknown;
 };
 
 export type MenuSubItemProps = {
-    // меню отдает рендер ссылок наружу и не зависит от роутера
+    /* меню отдает рендер ссылок наружу и не зависит от роутера.
+       props ссылки (to, href и т.д.) прокидываются в asComponent */
     asComponent?: ElementType;
     className?: string;
     children?: ReactNode;
-    //для передачи props для ссылок через to или href и т.д.
     [key: string]: unknown;
 };
 
@@ -81,12 +81,13 @@ export type MenuContextValue = {
 };
 
 export type ItemContextValue = {
-    // стейт живет внутри конкретного Item, потому что отвечает только
-    // за открытие его подменю
+    /* стейт живет внутри конкретного Item, потому что отвечает только
+       за открытие его подменю */
     isSubmenuOpen: boolean;
     toggleSubmenu: () => void;
     closeSubmenu: () => void;
-    // сохраняем label, чтобы мобильное подменю могло переиспользовать заголовок пункта
+    /* сохраняем label, чтобы мобильное подменю могло
+       переиспользовать заголовок пункта */
     label: ReactNode;
     setLabel: (label: ReactNode) => void;
 };

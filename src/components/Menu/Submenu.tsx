@@ -16,8 +16,8 @@ export default function Submenu(
     const { isSubmenuOpen } = useItemContext();
     const { isSidebarOpen, isMobile } = useMenuContext();
 
-    // мобильное подменю открывается поверх страницы,
-    // поэтому блокируем прокрутку body.
+    /* мобильное подменю открывается поверх страницы,
+       поэтому блокируем прокрутку body. */
     useEffect(() => {
         if (!isMobile || !isSubmenuOpen) {
             return;
@@ -65,8 +65,8 @@ export default function Submenu(
         <ul
             {...rest}
             data-open=""
-            // `inline` — вложенный список в раскрытом сайдбаре,
-            // `flyout` — попап рядом со свёрнутым сайдбаром.
+            /* `inline` — вложенный список в раскрытом сайдбаре,
+               `flyout` — попап рядом со свёрнутым сайдбаром. */
             data-variant={isSidebarOpen ? 'inline' : 'flyout'}
         >
             {children}
