@@ -6,7 +6,7 @@ export const itemControlClass = [
     "text-zinc-700 hover:bg-zinc-100 hover:text-zinc-900",
     "transition-colors",
     "aria-[current=page]:bg-blue-50 aria-[current=page]:text-blue-600",
-    "group-data-open:bg-blue-50 group-data-open:text-blue-600",
+    "group-data-open/item:bg-blue-50 group-data-open/item:text-blue-600",
 
     "data-[viewport=mobile]:flex-col",
     "data-[viewport=mobile]:gap-1",
@@ -23,6 +23,27 @@ export const itemLabelClass = [
     "text-sm font-medium",
     "whitespace-nowrap",
     "data-[viewport=mobile]:text-[11px]",
+
+    "data-[variant=tooltip]:pointer-events-none",
+    "data-[variant=tooltip]:absolute",
+    "data-[variant=tooltip]:left-full",
+    "data-[variant=tooltip]:top-1/2",
+    "data-[variant=tooltip]:z-50",
+    "data-[variant=tooltip]:ml-2",
+    "data-[variant=tooltip]:-translate-y-1/2",
+    "data-[variant=tooltip]:rounded-md",
+    "data-[variant=tooltip]:bg-zinc-900",
+    "data-[variant=tooltip]:px-2.5",
+    "data-[variant=tooltip]:py-1",
+    "data-[variant=tooltip]:text-xs",
+    "data-[variant=tooltip]:font-medium",
+    "data-[variant=tooltip]:text-white",
+    "data-[variant=tooltip]:shadow-lg",
+    "data-[variant=tooltip]:opacity-0",
+    "data-[variant=tooltip]:transition-opacity",
+    "group-hover/item:data-[variant=tooltip]:opacity-100",
+    /* если открыт flyout, подсказка не должна с ним пересекаться */
+    "group-data-open/item:data-[variant=tooltip]:opacity-0!",
 ].join(" ");
 
 export const itemIconClass = [
@@ -122,7 +143,7 @@ export const listClass = [
     "data-[viewport=mobile]:[&>li]:min-w-0",
 ].join(" ");
 
-export const itemClass = "relative group";
+export const itemClass = "relative group/item";
 
 export const toggleWrapClass = "flex justify-end px-1 group-data-[viewport=mobile]:hidden";
 

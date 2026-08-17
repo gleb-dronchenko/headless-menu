@@ -17,12 +17,14 @@ export default function Label(
         setLabel(children);
     }, [children, setLabel]);
 
-    if (!isMobile && !isSidebarOpen) {
-        return null;
-    }
-
     return (
-        <span {...rest} data-viewport={getViewport(isMobile)}>
+        <span
+            {...rest}
+            data-viewport={getViewport(isMobile)}
+            /* `inline` — текст пункта в раскрытом сайдбаре и на мобиле,
+               `tooltip` — подсказка сбоку при свёрнутом сайдбаре. */
+            data-variant={!isMobile && !isSidebarOpen ? 'tooltip' : 'inline'}
+        >
             {children}
         </span>
     );
