@@ -37,7 +37,11 @@ export default function Item(
         }
 
         const onClickHandler = (event: MouseEvent) => {
-            if (!itemRef.current?.contains(event.target as Node)) {
+            if (!(event.target instanceof Node)) {
+                return;
+            }
+
+            if (!itemRef.current?.contains(event.target)) {
                 setIsSubmenuOpen(false);
             }
         };
