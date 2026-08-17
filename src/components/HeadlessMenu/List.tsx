@@ -1,3 +1,5 @@
+import { useMenuContext } from './hooks';
+import { getViewport } from './helpers';
 import type { HeadlessMenuListProps } from './types';
 
 export default function List(
@@ -7,9 +9,13 @@ export default function List(
         children,
         ...rest
     } = props;
+    const { isMobile } = useMenuContext();
 
     return (
-        <ul {...rest}>
+        <ul
+            {...rest}
+            data-viewport={getViewport(isMobile)}
+        >
             {children}
         </ul>
     );

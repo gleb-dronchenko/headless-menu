@@ -1,3 +1,5 @@
+import { useMenuContext } from './hooks';
+import { getViewport } from './helpers';
 import type { HeadlessMenuSidebarProps } from './types';
 
 export default function Sidebar(
@@ -7,9 +9,13 @@ export default function Sidebar(
         children,
         ...rest
     } = props;
+    const { isMobile } = useMenuContext();
 
     return (
-        <div {...rest}>
+        <div
+            {...rest}
+            data-viewport={getViewport(isMobile)}
+        >
             {children}
         </div>
     );

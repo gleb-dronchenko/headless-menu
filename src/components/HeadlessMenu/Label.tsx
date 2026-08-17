@@ -1,18 +1,28 @@
-import { useMenuContext } from './hooks';
+import { useEffect } from 'react';
+import { useItemContext, useMenuContext } from './hooks';
+import { getViewport } from './helpers';
 import type { HeadlessMenuLabelProps } from './types';
 
 export default function Label(
     props: HeadlessMenuLabelProps,
 ) {
-    const { children, ...rest } = props;
-    const { isSidebarOpen } = useMenuContext();
+    const {
+        children,
+        ...rest
+    } = props;
+    const { isSidebarOpen, isMobile } = useMenuContext();
+    const { setLabel } = useItemContext();
 
-    if (!isSidebarOpen) {
+    useEffect(() => {
+        setLabel(children);
+    }, [children, setLabel]);
+
+    if (!isMobile && !isSidebarOpen) {
         return null;
     }
 
     return (
-        <span {...rest}>
+        <span {...rest} data-viewport={getViewport(isMobile)}>
             {children}
         </span>
     );

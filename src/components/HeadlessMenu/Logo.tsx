@@ -4,9 +4,9 @@ import type { HeadlessMenuLogoProps } from './types';
 export function ShortLogo(
     { children }: HeadlessMenuLogoProps,
 ) {
-    const { isSidebarOpen } = useMenuContext();
+    const { isSidebarOpen, isMobile } = useMenuContext();
     
-    if (isSidebarOpen) {
+    if (isMobile || isSidebarOpen) {
         return null;
     }
 
@@ -18,9 +18,9 @@ export function ShortLogo(
 export function FullLogo(
     { children }: HeadlessMenuLogoProps,
 ) {
-    const { isSidebarOpen } = useMenuContext();
+    const { isSidebarOpen, isMobile } = useMenuContext();
     
-    if (!isSidebarOpen) {
+    if (isMobile || !isSidebarOpen) {
         return null;
     }
 

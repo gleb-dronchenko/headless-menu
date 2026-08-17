@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { ItemContext } from './context';
 import { useMenuContext } from './hooks';
+import { getViewport } from './helpers';
 import type { HeadlessMenuItemProps } from './types';
 
 export default function Item(
@@ -10,8 +11,9 @@ export default function Item(
         children,
         className,
     } = props;
-    const { isSidebarOpen } = useMenuContext();
+    const { isSidebarOpen, isMobile } = useMenuContext();
     const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
+    const [label, setLabel] = useState<ReactNode>(null);
     const itemRef = useRef<HTMLLIElement>(null);
 
     const toggleSubmenu = () => {
@@ -22,13 +24,13 @@ export default function Item(
         setIsSubmenuOpen(false);
     };
 
-    // закрывать сабменю при изменении состояния sidebar
+    // закрывать сабменю при смене sidebar или брейкпоинта
     useEffect(() => {
         setIsSubmenuOpen(false);
-    }, [isSidebarOpen]);
+    }, [isSidebarOpen, isMobile]);
 
     useEffect(() => {
-        if (!isSubmenuOpen) {
+        if (!isSubmenuOpen || isMobile) {
             return;
         }
 
@@ -37,17 +39,21 @@ export default function Item(
                 setIsSubmenuOpen(false);
             }
         };
-
-        // закрывать сабменю при клике вне него
+        // закрывать сабменю при клике вне него        
         document.addEventListener('click', onClickHandler);
 
         return () =>
             document.removeEventListener('click', onClickHandler);
-    }, [isSubmenuOpen]);
+    }, [isSubmenuOpen, isMobile]);
 
     return (
-        <li ref={itemRef} className={className}>
-            <ItemContext.Provider value={{ isSubmenuOpen, toggleSubmenu, closeSubmenu }}>
+        <li
+            ref={itemRef}
+            className={className}
+            data-open={isSubmenuOpen ? '' : undefined}
+            data-viewport={getViewport(isMobile)}
+        >
+            <ItemContext.Provider value={{ isSubmenuOpen, toggleSubmenu, closeSubmenu, label, setLabel }}>
                 {children}
             </ItemContext.Provider>
         </li>

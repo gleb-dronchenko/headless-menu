@@ -1,8 +1,23 @@
 import { useMenuContext } from './hooks';
 import type { HeadlessMenuOpenBtnProps } from './types';
 
-export default function OpenBtn({ className, children }: HeadlessMenuOpenBtnProps) {
-    const { isSidebarOpen, setIsSidebarOpen } = useMenuContext();
+export default function OpenBtn(
+    props: HeadlessMenuOpenBtnProps,
+) {
+    const {
+        className,
+        children,
+    } = props;
+
+    const {
+        isSidebarOpen,
+        setIsSidebarOpen,
+        isMobile,
+    } = useMenuContext();
+
+    if (isMobile) {
+        return null;
+    }
 
     return (
         <button
