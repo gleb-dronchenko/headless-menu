@@ -1,6 +1,6 @@
 # Headless Menu
 
-Онлайн-демо: [GitHub Pages](https://gleb-dronchenko.github.io/headless-menu/) · [CodeSandbox](https://codesandbox.io/p/github/gleb-dronchenko/headless-menu)
+Онлайн-демо: [GitHub Pages](https://gleb-dronchenko.github.io/headless-menu/) · [CodeSandbox](https://codesandbox.io/p/sandbox/github/gleb-dronchenko/headless-menu)
 
 Headless-меню на React: compound-компоненты без собственных стилей. Меню отдаёт поведение и `data-*` атрибуты, внешний вид задаёт приложение.
 
