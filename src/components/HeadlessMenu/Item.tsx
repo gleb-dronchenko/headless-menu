@@ -12,8 +12,10 @@ export default function Item(
         className,
     } = props;
     const { isSidebarOpen, isMobile } = useMenuContext();
+    // локальный UI-стейт
     const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
     const [label, setLabel] = useState<ReactNode>(null);
+    
     const itemRef = useRef<HTMLLIElement>(null);
 
     const toggleSubmenu = () => {

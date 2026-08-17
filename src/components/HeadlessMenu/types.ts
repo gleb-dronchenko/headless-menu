@@ -1,6 +1,7 @@
 import type { ElementType, ReactNode } from 'react';
 
 export type HeadlessMenuProps = {
+    // внешний стейт
     isSidebarOpened: boolean;
     setIsSidebarOpened: (isSidebarOpened: boolean) => void;
     // matchMedia-запрос для определения вьюпорта
@@ -80,6 +81,7 @@ export type MenuContextValue = {
 };
 
 export type ItemContextValue = {
+    // внутренний стейт: только отображение подменю
     isSubmenuOpen: boolean;
     toggleSubmenu: () => void;
     closeSubmenu: () => void;
