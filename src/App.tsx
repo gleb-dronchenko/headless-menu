@@ -152,6 +152,7 @@ const openBtnIconClass = [
 // получаем слоты для мобильного подменю
 // передаем через props слоты для мобильного подменю для того чтобы не переписывать их в каждом подменю
 // передаем через пропсы чтобы не парсить их из children по типу компонента
+// слоты можно стилизовать через className на Overlay / Title / Close
 function getSheetSlots() {
     return {
         overlay: <HeadlessMenu.Overlay />,
