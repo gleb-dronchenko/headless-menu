@@ -40,9 +40,12 @@ export const itemLabelClass = [
     "data-[variant=tooltip]:text-white",
     "data-[variant=tooltip]:shadow-lg",
     "data-[variant=tooltip]:opacity-0",
+    "data-[variant=tooltip]:invisible",
     "data-[variant=tooltip]:transition-opacity",
+    "group-hover/item:data-[variant=tooltip]:visible",
     "group-hover/item:data-[variant=tooltip]:opacity-100",
     /* если открыт flyout, подсказка не должна с ним пересекаться */
+    "group-data-open/item:data-[variant=tooltip]:invisible!",
     "group-data-open/item:data-[variant=tooltip]:opacity-0!",
 ].join(" ");
 
